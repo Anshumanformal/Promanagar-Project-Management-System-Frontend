@@ -5,6 +5,7 @@ import { DialogContent, DialogTrigger, DialogHeader } from '../../components/ui/
 import { PlusIcon } from 'lucide-react'
 import IssueList from './IssueList'
 import ChatBox from './ChatBox'
+import { Button } from '../../components/ui/button'
 
 
 const ProjectDetails = () => {
@@ -70,7 +71,7 @@ const ProjectDetails = () => {
                         </div>
                     </section>
                 </div>
-                <div className='lg:w-[30%] rounded-md stciky right-5 top-10'>
+                <div className='lg:w-[30%] rounded-md sticky right-5 top-10'>
                     <ChatBox />
                 </div>
             </div>
