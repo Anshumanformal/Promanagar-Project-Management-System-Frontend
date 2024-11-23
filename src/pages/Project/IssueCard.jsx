@@ -2,8 +2,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { DotsVerticalIcon, PersonIcon } from '@radix-ui/react-icons'
 import { Card, CardTitle, CardContent, CardHeader } from '../../components/ui/card'
 import UserList from './UserList'
+import { Button } from '../../components/ui/button'
 
-import React from 'react'
 import { Avatar, AvatarFallback } from '@radix-ui/react-avatar'
 import { useNavigate } from 'react-router-dom'
 

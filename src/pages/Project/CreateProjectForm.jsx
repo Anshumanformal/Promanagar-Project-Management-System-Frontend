@@ -1,10 +1,12 @@
-import React from 'react'
+/* eslint-disable no-constant-condition */
 import { useForm } from 'react-hook-form'
-import { Form, FormControl, FormField, FormItem } from '../../components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '../../components/ui/form'
 import { DialogClose } from '../../components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select'
 import { tags } from './ProjectList'
 import { CrossIcon } from 'lucide-react'
+import { Input } from '../../components/ui/input'
+import { Button } from '../../components/ui/button'
 
 
 const CreateProjectForm = () => {
@@ -101,7 +103,9 @@ const CreateProjectForm = () => {
             </FormItem>}
           />
           <DialogClose>
-            {false ? 
+            {
+            false 
+            ? 
             <div><p>You can create only 3 projects with free plan. Please upgrade your plan</p></div> :
             <Button type="submit" className="w-full mt-5">Create Project</Button>
             }

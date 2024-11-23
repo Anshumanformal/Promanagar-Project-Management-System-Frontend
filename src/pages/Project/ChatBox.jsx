@@ -1,6 +1,9 @@
 import { ScrollArea } from '../../components/ui/scroll-area'
 import { Input } from '../../components/ui/input'
 import { PaperPlaneIcon } from '@radix-ui/react-icons'
+import { useState } from 'react'
+import { Button } from '../../components/ui/button'
+import { Avatar, AvatarFallback } from '../../components/ui/avatar'
 
 const ChatBox = () => {
 
@@ -22,7 +25,7 @@ const ChatBox = () => {
           {[1, 1, 1].map(item => (
             index%2 == 0 ? <div className='flex gap-2 mb-2 justify-start' key={item}>
               <Avatar>
-                <AvatarFallBack>R</AvatarFallBack>
+                <AvatarFallback>R</AvatarFallback>
               </Avatar>
               <div className='space-y-2 py-2 px-5 border rounded-ss-2xl rounded-e-xl'>
                 <p>Ram</p>
@@ -35,7 +38,7 @@ const ChatBox = () => {
               <p className='text-gray-300'>How are you</p>
             </div>
             <Avatar>
-              <AvatarFallBack>R</AvatarFallBack>
+              <AvatarFallback>R</AvatarFallback>
             </Avatar>
           </div>
           ))}
@@ -44,7 +47,7 @@ const ChatBox = () => {
           <Input
           placeHolder = "type message..."
           className = "py-7 border-t outline-none focus:outline-none focus:ring-0 rounded-e-none border-b-0 border-x-0"
-          value={message} onChange={onMessageChange}
+          value={message} onChange={handleMessageChange}
           />
           <Button onClick={handleSendMessage} className="absolute right-2 top-3 rounded-full"
           size = "icon" variant = "ghost"

@@ -1,8 +1,9 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../../components/ui/dialog"
 import CreateProjectForm from "./CreateProjectForm"
 import { PersonIcon } from "@radix-ui/react-icons"
 import { useNavigate } from "react-router-dom"
+import { Button } from "../../components/ui/button"
 
 const Navbar = () => {
 

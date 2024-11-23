@@ -1,7 +1,7 @@
-import React from 'react'
-import { Form, FormControl, FormMessage, FormItem } from '../../components/ui/form'
+import { Form, FormControl, FormMessage, FormItem, FormField } from '../../components/ui/form'
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
+import { useForm } from 'react-hook-form'
 
 
 const CreateCommentForm = () => {

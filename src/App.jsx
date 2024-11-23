@@ -8,7 +8,7 @@ import IssueDetails from './pages/Project/IssueDetails'
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
