@@ -5,6 +5,7 @@ import { DropdownMenu, DropdownMenuTrigger } from '../../components/ui/dropdown-
 import { Button } from '../../components/ui/button'
 import { DropdownMenuContent, DropdownMenuItem } from '../../components/ui/dropdown-menu'
 import { useNavigate } from 'react-router-dom'
+import {Badge} from '../../components/ui/badge'
 
 const ProjectCard = () => {
 
