@@ -1,5 +1,4 @@
 import { Avatar } from '@radix-ui/react-avatar'
-import React from 'react'
 import { AvatarFallback } from '../../components/ui/avatar'
 
 const UserList = () => {

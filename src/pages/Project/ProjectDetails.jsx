@@ -1,11 +1,11 @@
-import React from 'react'
 import { ScrollArea } from '../../components/ui/scroll-area'
 import { Avatar, AvatarFallback } from "../../components/ui/avatar"
-import { DialogContent, DialogTrigger, DialogHeader } from '../../components/ui/dialog'
-import { PlusIcon } from 'lucide-react'
+import { DialogContent, DialogTrigger, DialogHeader, Dialog, DialogClose } from '../../components/ui/dialog'
+import { Badge, PlusIcon } from 'lucide-react'
 import IssueList from './IssueList'
 import ChatBox from './ChatBox'
 import { Button } from '../../components/ui/button'
+import InviteUserForm from './InviteUserForm'
 
 
 const ProjectDetails = () => {

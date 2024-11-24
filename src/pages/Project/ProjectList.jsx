@@ -1,4 +1,3 @@
-import React,{useState} from 'react'
 import { Card, CardContent } from '../../components/ui/card'
 import { ScrollArea } from '../../components/ui/scroll-area'
 import { RadioGroup, RadioGroupItem } from '../../components/ui/radio-group'
@@ -7,6 +6,7 @@ import { Label } from '../../components/ui/label'
 import { Input } from "../../components/ui/input"
 import ProjectCard from './ProjectCard'
 import { Button } from '../../components/ui/button'
+import { useState } from 'react'
 
 export const tags = [
   "all",

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card } from '../../components/ui/card'
 import { DotFilledIcon, DotsVerticalIcon } from '@radix-ui/react-icons'
 import { DropdownMenu, DropdownMenuTrigger } from '../../components/ui/dropdown-menu'

@@ -4,7 +4,8 @@ import { Input } from '../../components/ui/input'
 import { useForm } from 'react-hook-form'
 
 
-const CreateCommentForm = () => {
+const CreateCommentForm = (issueId) => {
+    console.log('issueId-----', issueId)
 
     const form = useForm({
         defaultValues: {

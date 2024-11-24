@@ -1,6 +1,6 @@
 import { TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 import { ScrollArea } from '../../components/ui/scroll-area'
-import { Tabs } from '../../components/ui/tabs'
+import { Tabs, TabsContent } from '../../components/ui/tabs'
 import CreateCommentForm from './CreateCommentForm'
 
 
@@ -31,7 +31,8 @@ const IssueDetails = () => {
               </TabsList>
               <TabsContent value="all">Make changes to your account here</TabsContent>
               <TabsContent value="comments">
-                <CreateCommentForm issueId={issueId}/>
+                <CreateCommentForm issueId={123} />
+                {/* <CreateCommentForm issueId={issueId}/> */}
               </TabsContent>
               <TabsContent value="history">Change your password here</TabsContent>
 
