@@ -83,7 +83,8 @@ const CreateProjectForm = () => {
             name="tags"
             render={({field}) => <FormItem>
               <FormControl>
-                <Select onValueChange={value=> {field.handleTagsChange(value)}}>
+                {/* <Select onValueChange={value=> {field.handleTagsChange(value)}}> */}
+                <Select onValueChange={value=> {handleTagsChange(value)}}>
                   <SelectTrigger className='w-full'>
                     <SelectValue placeholder='Tags'/>
                   </SelectTrigger>

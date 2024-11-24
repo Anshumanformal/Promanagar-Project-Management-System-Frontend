@@ -23,7 +23,8 @@ const ChatBox = () => {
         <h1 className='border-b p-5'>Chat Box</h1>
         <ScrollArea className="h-[32rem] w-full p-5 flex gap-3 flex-col">
           {[1, 1, 1].map(item => (
-            index%2 == 0 ? <div className='flex gap-2 mb-2 justify-start' key={item}>
+            // in the video instead of item, 'index' was written below
+            item % 2 == 0 ? <div className='flex gap-2 mb-2 justify-start' key={item}>
               <Avatar>
                 <AvatarFallback>R</AvatarFallback>
               </Avatar>

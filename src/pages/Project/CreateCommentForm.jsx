@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import { Form, FormControl, FormMessage, FormItem, FormField } from '../../components/ui/form'
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
+import { Avatar } from '../../components/ui/avatar'
 import { useForm } from 'react-hook-form'
+import { AvatarFallback } from '@radix-ui/react-avatar';
 
 
-const CreateCommentForm = (issueId) => {
+const CreateCommentForm = ({issueId}) => {
     console.log('issueId-----', issueId)
 
     const form = useForm({
@@ -20,20 +23,31 @@ const CreateCommentForm = (issueId) => {
   return (
     <div>
         <Form {...form}>
-                <form className='space-y-5' onSubmit={form.handleSubmit(onSubmit)}>
-                    <FormField control={form.control}
+                <form className='flex gap-2' onSubmit={form.handleSubmit(onSubmit)}>
+                    <FormField 
+                        control={form.control}
                         name="content"
-                        render={({ field }) => <FormItem>
-                            <FormControl>
-                                <Input {...field}
-                                    type="text"
-                                    className="border w-full border-gray-700 py-5 px-5"
-                                    placeholder="content..." />
-                            </FormControl>
+                        render={({ field }) => (
+                            <FormItem>
+                                <div className="flex gap-2">
+                                    <div>
+                                        <Avatar>
+                                            <AvatarFallback>R</AvatarFallback>
+                                        </Avatar>
+                                    </div>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            type="text"
+                                            className="w-[20rem]"
+                                            placeholder="add comment here..." />
+                                    </FormControl>
+                                </div>
                             <FormMessage />
-                        </FormItem>}
+                        </FormItem>
+                        )}
                     />
-                    <Button type="submit" className="w-full mt-5">Invite user</Button>
+                    <Button type="submit" className="w-full mt-5">Save</Button>
                 </form>
 
             </Form>

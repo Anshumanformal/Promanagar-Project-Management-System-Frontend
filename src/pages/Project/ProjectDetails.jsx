@@ -10,8 +10,9 @@ import InviteUserForm from './InviteUserForm'
 
 const ProjectDetails = () => {
 
-    const handleProjectInvitation = () => {
+    console.log('projectDeatils------')
 
+    const handleProjectInvitation = () => {
     }
 
     return (

@@ -17,7 +17,7 @@ const IssueCard = () => {
         <CardHeader className="py-0 pb-1">
           <div className='flex justify-between items-center'>
             <CardTitle className="cursor-pointer" onClick={() => navigate("/project/3/issue/10")}>
-              Create Navbar
+              css related issue
             </CardTitle>
             <DropdownMenu>
               <DropdownMenuTrigger>
