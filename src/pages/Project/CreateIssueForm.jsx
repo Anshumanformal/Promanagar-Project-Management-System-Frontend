@@ -1,20 +1,34 @@
+/* eslint-disable react/prop-types */
 import { Form, FormControl, FormMessage, FormItem, FormField } from '../../components/ui/form'
 import { Input } from '../../components/ui/input'
 import { DialogClose } from '../../components/ui/dialog'
 import { Button } from '../../components/ui/button'
 import { useForm } from "react-hook-form"
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { createIssue } from '../../Redux/Issue/Action'
 
 
-const CreateIssueForm = () => {
-
+const CreateIssueForm = ({status}) => {
+  
+  const {id} = useParams()
+  const dispatch = useDispatch()
   const form = useForm({
     defaultValues: {
-        email: ""
+        issueName : "",
+        description : ""
     }
   })
 
   const onSubmit = (data) => {
-      console.log('create project data------', data)
+    data.projectId = id
+    dispatch(createIssue({
+        title : data.issueName,
+        description : data.description,
+        projectID : id,
+        status
+    }))
+    console.log('create issue data-----', data)
   }
 
   return (

@@ -4,10 +4,19 @@ import CreateProjectForm from "./CreateProjectForm"
 import { PersonIcon } from "@radix-ui/react-icons"
 import { useNavigate } from "react-router-dom"
 import { Button } from "../../components/ui/button"
+import { useDispatch, useSelector } from "react-redux"
+import { logout } from "../../Redux/Auth/Action"
 
 const Navbar = () => {
 
+    const { auth } = useSelector(store => store)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
+
     return (
         <div className='border-b py-4 px-5 flex items-center justify-between'>
             <div className='flex items-center gap-3'>
@@ -30,13 +39,12 @@ const Navbar = () => {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                            <DropdownMenuItem>Logout</DropdownMenuItem>
+                            <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
                             <DropdownMenuContent></DropdownMenuContent>
                         </DropdownMenuContent>
                     </DropdownMenu>
-
+                    <p>{auth.user?.fullName}</p>
                 </div>
-
             </div>
         </div>
     )

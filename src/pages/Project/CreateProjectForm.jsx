@@ -7,9 +7,13 @@ import { tags } from './ProjectList'
 import { CrossIcon } from 'lucide-react'
 import { Input } from '../../components/ui/input'
 import { Button } from '../../components/ui/button'
+import { useDispatch } from 'react-redux'
+import { createProjects } from '../../Redux/Project/Action';
 
 
 const CreateProjectForm = () => {
+
+  const dispatch = useDispatch()
 
   const handleTagsChange = (newValue) => {
     const currentTags = form.getValues("tags")
@@ -30,7 +34,8 @@ const CreateProjectForm = () => {
   })
 
   const onSubmit = (data) => {
-    console.log('create project data', data)
+    console.log('create project data form onSubmit', data)
+    dispatch(createProjects(data))
   }
 
   return (

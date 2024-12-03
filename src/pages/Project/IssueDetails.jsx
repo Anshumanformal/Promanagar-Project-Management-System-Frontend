@@ -8,24 +8,36 @@ import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from ".
 import { AvatarFallback } from "@radix-ui/react-avatar"
 import { Avatar } from "../../components/ui/avatar"
 import { Badge } from "../../components/ui/badge"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { fetchIssueById, updateIssueStatus } from "../../Redux/Issue/Action"
+import { fetchComments } from "../../Redux/Comment/Action"
 
 const IssueDetails = () => {
   const { projectId, issueId } = useParams()
+  const dispatch = useDispatch()
+  const {issue,comment} = useSelector(store => store)
 
   const handleUpdateIssueStatus = (status) => {
     console.log("status---", status)
+    dispatch(updateIssueStatus({id:issueId, status}))
   }
+
+  useEffect(()=> {
+    dispatch(fetchIssueById(issueId))
+    dispatch(fetchComments(issueId))
+  }, [issueId])
 
   return (
     <div className="px-20 py-8 text-gray-400">
       <div className="flex justify-between border p-10 rounded-lg">
         <ScrollArea className="h-[80vh] w-[60%]">
           <div>
-            <h1 className="text-lg font-semibold text-gray-400">Create Navbar</h1>
+            <h1 className="text-lg font-semibold text-gray-400">{issue.issueDetails?.title}</h1>
           </div>
           <div className="py-5">
-            <h2 className="font-semibold text-gray-400">Description</h2>
-            <p className="text-gray-400 text-sm mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quisquam quos provident tenetur saepe iste sint, expedita iusto ab corrupti alias ullam autem, quidem error quo! Molestiae cumque recusandae exercitationem!</p>
+            <h2 className="font-semibold text-gray-400">{issue.issueDetails?.description}</h2>
+            {/* <p className="text-gray-400 text-sm mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quisquam quos provident tenetur saepe iste sint, expedita iusto ab corrupti alias ullam autem, quidem error quo! Molestiae cumque recusandae exercitationem!</p> */}
           </div>
           <div className="mt-5">
             <h1 className="pb-3">Activity</h1>
@@ -39,8 +51,8 @@ const IssueDetails = () => {
               <TabsContent value="comments">
                 <CreateCommentForm issueId={issueId} />
                 <div className="mt-8 space-y-6">
-                  {[1, 1, 1].map((item) => (
-                    <CommentCard key={item} />
+                  {comment.comments.map((item) => (
+                    <CommentCard item={item} key={item} />
                   ))}
                 </div>
               </TabsContent>
@@ -65,12 +77,12 @@ const IssueDetails = () => {
               <div className="space-y-7">
                 <div className="flex gap-10 items-center">
                   <p className="w-[7rem]">Assignee</p>
-                  <div className="flex items-center gap-3">
+                  {issue.issueDetails?.assignee?.fullName ? <div className="flex items-center gap-3">
                     <Avatar className="h-8 w-8 text-xs">
-                      <AvatarFallback>Z</AvatarFallback>
+                      <AvatarFallback>{issue.issueDetails?.assignee?.fullName[0]}</AvatarFallback>
                     </Avatar>
-                    <p>Anshuman</p>
-                  </div>
+                    <p>{issue.issueDetails?.assignee?.fullName}</p>
+                  </div> : <p>Unassigned</p>}
                 </div>
                 <div className="flex gap-10 items-center">
                   <p className="w-[7rem]">Labels</p>
@@ -78,7 +90,7 @@ const IssueDetails = () => {
                 </div>
                 <div className="flex gap-10 items-center">
                   <p className="w-[7rem]">Status</p>
-                  <Badge>in_progress</Badge>
+                  <Badge>{issue.issueDetails?.status}</Badge>
                 </div>
                 <div className="flex gap-10 items-center">
                   <p className="w-[7rem]">Release</p>

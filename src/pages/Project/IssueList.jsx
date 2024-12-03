@@ -6,10 +6,21 @@ import { Dialog, DialogHeader } from '../../components/ui/dialog'
 import IssueCard from './IssueCard'
 import { PlusIcon } from 'lucide-react'
 import CreateIssueForm from './CreateIssueForm';
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { fetchIssues } from '../../Redux/Issue/Action'
+import { useParams } from 'react-router-dom'
 
 const IssueList = ({ title, status }) => {
 
-  console.log('title, status', title, status)
+  const {issue} = useSelector(store => store)
+  const {id} = useParams()
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchIssues(id))
+  },[id])
+
   return (
     <>
       <Dialog>
@@ -19,7 +30,7 @@ const IssueList = ({ title, status }) => {
           </CardHeader>
           <CardContent className="px-2">
             <div className='space-y-2'>
-              {[1,1,1].map(item => <IssueCard key={item} />)}
+              {issue.issues.filter(issue => issue.status == status).map(item => <IssueCard projectId={id} item={item} key={item.id} />)}
             </div>
           </CardContent>
           <CardFooter>
@@ -35,7 +46,7 @@ const IssueList = ({ title, status }) => {
           <DialogHeader>
             <DialogTitle>Create New Issue</DialogTitle>
           </DialogHeader>
-          <CreateIssueForm/>
+          <CreateIssueForm status={status}/>
         </DialogContent>
       </Dialog>
     </>

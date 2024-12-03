@@ -2,10 +2,13 @@ import { Form, FormControl, FormMessage, FormItem, FormField } from '../../compo
 import { Input } from '../../components/ui/input'
 import { Button } from '../../components/ui/button'
 import { useForm } from "react-hook-form"
+import { useDispatch } from 'react-redux'
+import { login } from '../../Redux/Auth/Action'
 
 
 export const Login = () => {
 
+    const dispatch = useDispatch()
     const form = useForm({
         defaultValues: {
             email: "",
@@ -14,7 +17,8 @@ export const Login = () => {
     })
 
     const onSubmit = (data) => {
-        console.log('create project data------', data)
+        dispatch(login(data))
+        console.log('login form data------', data)
     }
 
     return (
@@ -46,7 +50,7 @@ export const Login = () => {
                             <FormMessage />
                         </FormItem>}
                     />
-                    <Button type="submit" className="w-full mt-5">Register</Button>
+                    <Button type="submit" className="w-full mt-5">Login</Button>
                 </form>
 
             </Form>
