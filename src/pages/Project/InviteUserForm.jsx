@@ -3,8 +3,14 @@ import { DialogClose } from '../../components/ui/dialog'
 import { Input } from '../../components/ui/input'
 import { Button } from '../../components/ui/button'
 import { useForm } from "react-hook-form"
+import { useDispatch } from 'react-redux'
+import { inviteToProject } from '../../Redux/Project/Action'
+import { useParams } from 'react-router-dom'
 
 const InviteUserForm = () => {
+
+    const dispatch = useDispatch()
+    const {id} = useParams()
 
     const form = useForm({
         defaultValues: {
@@ -13,7 +19,8 @@ const InviteUserForm = () => {
     })
 
     const onSubmit = (data) => {
-        console.log('create project data------', data)
+        console.log('invite user form------', data)
+        dispatch(inviteToProject({email : data.email, projectId: id}))
     }
 
     return (
@@ -21,13 +28,13 @@ const InviteUserForm = () => {
             <Form {...form}>
                 <form className='space-y-5' onSubmit={form.handleSubmit(onSubmit)}>
                     <FormField control={form.control}
-                        name="name"
+                        name="email"
                         render={({ field }) => <FormItem>
                             <FormControl>
                                 <Input {...field}
-                                    type="text"
+                                    type="email"
                                     className="border w-full border-gray-700 py-5 px-5"
-                                    placeholder="project name..." />
+                                    placeholder="Invitee email..." />
                             </FormControl>
                             <FormMessage />
                         </FormItem>}
